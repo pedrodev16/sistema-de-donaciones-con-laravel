@@ -25,4 +25,10 @@ class LoginController extends Controller
             'email' => 'Las credenciales proporcionadas no coinciden con nuestros registros.',
         ]);
     }
+    //logout
+    public function logout()
+    {
+        auth()->logout();
+        return redirect('/');
+    }
 }
