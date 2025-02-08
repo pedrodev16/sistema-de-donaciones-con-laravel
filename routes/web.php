@@ -40,6 +40,11 @@ Route::middleware(['auth'])->group(function () {
         return view('admin.usuarios');
     })->name('usuarios');
 
+
+    Route::get('/medicinas', function () {
+        return view('admin.medicinas');
+    })->name('medicinas');
+
     Route::get('/stock', function () {
         return view('admin.stock');
     })->name('stock');

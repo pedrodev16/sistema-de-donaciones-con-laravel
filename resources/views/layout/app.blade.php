@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <!-- tailwindcss -->
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.0.2/dist/tailwind.min.css" rel="stylesheet">
-
+@livewireStyles
     <title>app</title>
 </head>
 <body>
@@ -24,6 +24,8 @@
                 hover:text-gray-200 px-4">Donaciones</a></li>
                 <li><a href="{{route('stock')}}" class="text-white
                     hover:text-gray-200 px-4">Stock</a></li>
+                    <li><a href="{{route('medicinas')}}" class="text-white
+                        hover:text-gray-200 px-4">Medicinas</a></li>
                     <li><a href="{{route('usuarios')}}" class="text-white
                         hover:text-gray-200 px-4">Usuarios</a></li>
             </ul>
@@ -40,5 +42,9 @@
 
 
     @yield('content')
+
+
+    @livewireScripts
+    @yield('alscripts')
 </body>
 </html>

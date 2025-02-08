@@ -13,11 +13,18 @@ return new class extends Migration
     {
         Schema::create('medicinas', function (Blueprint $table) {
             $table->id();
+            $table->string('nombre');
+            $table->string('descripcion');
+            $table->string('tipo');
+            $table->string('presentacion');
+            $table->string('laboratorio');
             $table->timestamps();
         });
     }
-
+   // nombre, descripcion, tipo, presentacion, laboratorio
     /**
+     *
+     *
      * Reverse the migrations.
      */
     public function down(): void
