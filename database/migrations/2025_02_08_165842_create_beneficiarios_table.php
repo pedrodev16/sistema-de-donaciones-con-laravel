@@ -8,11 +8,25 @@ return new class extends Migration
 {
     /**
      * Run the migrations.
+     * personas beneficiadas por las donaciones de medicina
      */
     public function up(): void
     {
         Schema::create('beneficiarios', function (Blueprint $table) {
             $table->id();
+            $table->string('nombre');
+            $table->string('apellido');
+            $table->string('direccion');
+            $table->string('telefono');
+            $table->string('email')->unique();
+            $table->date('fecha_nacimiento');
+            $table->string('sexo');
+            $table->string('edad');
+            $table->string('estado_civil');
+
+            $table->string('tipo_sangre');
+            $table->string('enfermedades');
+            $table->string('alergias');
             $table->timestamps();
         });
     }

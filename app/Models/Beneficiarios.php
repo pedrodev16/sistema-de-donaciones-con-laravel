@@ -8,4 +8,18 @@ use Illuminate\Database\Eloquent\Model;
 class beneficiarios extends Model
 {
     use HasFactory;
+    protected $fillable = [
+        'nombre',
+        'apellido',
+        'direccion',
+        'telefono',
+        'email',
+        'fecha_nacimiento',
+        'sexo',
+        'edad',
+        'estado_civil',
+        'tipo_sangre',
+        'enfermedades',
+        'alergias',
+    ];
 }
