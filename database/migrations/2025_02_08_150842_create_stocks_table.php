@@ -8,11 +8,17 @@ return new class extends Migration
 {
     /**
      * Run the migrations.
+     * stock de medicinas en el INVENTARIO
      */
     public function up(): void
     {
-        Schema::create('donaciones', function (Blueprint $table) {
+        Schema::create('stocks', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('medicina_id')->constrained()->onDelete('cascade');
+            $table->integer('cantidad');
+            $table->string('ubicacion');
+            $table->string('observacion');
+            $table->string('estado');
             $table->timestamps();
         });
     }
@@ -22,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('donaciones');
+        Schema::dropIfExists('stocks');
     }
 };

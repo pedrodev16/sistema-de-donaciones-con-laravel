@@ -4,6 +4,7 @@
 namespace App\Http\Livewire\Medicina;
 
 use App\Models\Medicinas;
+use App\Models\stock;
 use Livewire\Component;
 
 class MedicinaForm extends Component
@@ -86,12 +87,19 @@ class MedicinaForm extends Component
             }
         } else {
             try {
-                Medicinas::create([
+                $medicina = Medicinas::create([
                     'nombre' => $this->nombre,
                     'descripcion' => $this->descripcion,
                     'tipo' => $this->tipo,
                     'presentacion' => $this->presentacion,
                     'laboratorio' => $this->laboratorio,
+                ]);
+                stock::create([
+                    'medicina_id' => $medicina->id,
+                    'cantidad' => 0,
+                    'ubicacion' => 'Bodega',
+                    'observacion' => 'Medicina nueva',
+                    'estado' => 'No Disponible',
                 ]);
                 $this->emit('ok', ['message' => 'Medicina creada']);
             } catch (\Exception $e) {

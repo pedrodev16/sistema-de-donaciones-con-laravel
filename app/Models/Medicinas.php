@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Medicinas extends Model
 {
     use HasFactory;
-     //registro de  nombre, descripcion, tipo, presentacion, laboratorio
+    //registro de  nombre, descripcion, tipo, presentacion, laboratorio
     protected $fillable = [
         'nombre',
         'descripcion',
@@ -16,4 +16,9 @@ class Medicinas extends Model
         'presentacion',
         'laboratorio',
     ];
+
+    public function stocks()
+    {
+        return $this->hasMany(Stock::class, 'medicina_id');
+    }
 }

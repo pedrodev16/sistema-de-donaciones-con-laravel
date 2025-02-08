@@ -36,7 +36,13 @@ class MedicinaList extends Component
 
     public function delete($id)
     {
-        Medicinas::findOrFail($id)->delete();
+        $medicina = Medicinas::findOrFail($id);
+
+        // Eliminar filas dependientes en stocks
+        $medicina->stocks()->delete();
+
+        // Luego eliminar la medicina
+        $medicina->delete();
         $this->cargamedicinas();
     }
 
