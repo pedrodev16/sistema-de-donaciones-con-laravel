@@ -2,35 +2,33 @@
 
 namespace App\Http\Livewire\Beneficiario;
 
-use App\Models\beneficiarios;
+use App\Models\Beneficiarios;
 use Livewire\Component;
 
 class BeneficiarioForm extends Component
 {
-
     public $usuario_id;
-    public $nombre, $apellido, $direccion, $telefono, $email, $fecha_nacimiento, $sexo, $edad, $estado_civil, $tipo_sangre, $enfermedades, $alergias;
+    public $nombre, $apellido, $direccion, $cedula, $telefono, $email, $fecha_nacimiento, $sexo, $edad, $estado_civil, $tipo_sangre, $enfermedades, $alergias;
 
     protected $listeners = ['edit_form' => 'cargarUsuario'];
 
-
-
     public function cargarUsuario($id)
     {
-        $usuario = beneficiarios::findOrFail($id);
+        $usuario = Beneficiarios::findOrFail($id);
         $this->usuario_id = $usuario->id;
         $this->nombre = $usuario->nombre;
         $this->apellido = $usuario->apellido;
         $this->direccion = $usuario->direccion;
         $this->telefono = $usuario->telefono;
+        $this->cedula = $usuario->cedula;
         $this->email = $usuario->email;
         $this->fecha_nacimiento = $usuario->fecha_nacimiento;
         $this->sexo = $usuario->sexo;
         $this->edad = $usuario->edad;
         $this->estado_civil = $usuario->estado_civil;
-        $this->tipo_sangre = $usuario->tipo_sangre;
-        $this->enfermedades = $usuario->enfermedades;
-        $this->alergias = $usuario->alergias;
+        $this->tipo_sangre = $usuario->tipo_sangre ?? null; // Opcional
+        $this->enfermedades = $usuario->enfermedades ?? null; // Opcional
+        $this->alergias = $usuario->alergias ?? null; // Opcional
     }
 
     public function save()
@@ -41,28 +39,27 @@ class BeneficiarioForm extends Component
                 'apellido' => 'required|string',
                 'direccion' => 'required|string',
                 'telefono' => 'required|string',
-                'email' => 'required|email|',
+                'cedula' => 'required',
+                'email' => 'email|nullable',
                 'fecha_nacimiento' => 'required|date',
                 'sexo' => 'required|string',
                 'edad' => 'required|integer|min:0',
                 'estado_civil' => 'required|string',
-                'tipo_sangre' => 'required|string',
+                'tipo_sangre' => 'nullable|string',
                 'enfermedades' => 'nullable|string',
                 'alergias' => 'nullable|string',
             ]
-
         );
 
-
         if ($this->usuario_id) {
-
-            $beneficiario = beneficiarios::findOrFail($this->usuario_id);
+            $beneficiario = Beneficiarios::findOrFail($this->usuario_id);
 
             try {
                 $beneficiario->update([
                     'nombre' => $this->nombre,
                     'apellido' => $this->apellido,
                     'direccion' => $this->direccion,
+                    'cedula' => $this->cedula,
                     'telefono' => $this->telefono,
                     'email' => $this->email,
                     'fecha_nacimiento' => $this->fecha_nacimiento,
@@ -73,16 +70,17 @@ class BeneficiarioForm extends Component
                     'enfermedades' => $this->enfermedades,
                     'alergias' => $this->alergias
                 ]);
-                $this->emit('ok', ['message' => 'Medicina actualizada']);
+                $this->emit('ok', ['message' => 'Usuario actualizado']);
             } catch (\Exception $e) {
-                $this->emit('error', ['message' => 'Error al actualizar medicina']);
+                $this->emit('error', ['message' => 'Error al actualizar el usuario']);
             }
         } else {
             try {
-                $medicina = beneficiarios::create([
+                $beneficiario = Beneficiarios::create([
                     'nombre' => $this->nombre,
                     'apellido' => $this->apellido,
                     'direccion' => $this->direccion,
+                    'cedula' => $this->cedula,
                     'telefono' => $this->telefono,
                     'email' => $this->email,
                     'fecha_nacimiento' => $this->fecha_nacimiento,
@@ -93,9 +91,9 @@ class BeneficiarioForm extends Component
                     'enfermedades' => $this->enfermedades,
                     'alergias' => $this->alergias
                 ]);
-                $this->emit('ok', ['message' => 'Medicina creada']);
+                $this->emit('ok', ['message' => 'Usuario creado']);
             } catch (\Exception $e) {
-                $this->emit('error', ['message' => 'Error al crear medicina']);
+                $this->emit('error', ['message' => 'Error al crear el usuario']);
             }
         }
 
@@ -103,6 +101,7 @@ class BeneficiarioForm extends Component
         $this->emit('ok', ['message' => 'Usuario guardado/actualizado']);
         $this->emit('beneficiarioCreated');
     }
+
     public function render()
     {
         return view('livewire.beneficiario.beneficiario-form');

@@ -13,6 +13,7 @@ class beneficiarios extends Model
         'apellido',
         'direccion',
         'telefono',
+        'cedula',
         'email',
         'fecha_nacimiento',
         'sexo',

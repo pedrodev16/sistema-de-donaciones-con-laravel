@@ -18,18 +18,20 @@ return new class extends Migration
             $table->string('apellido');
             $table->string('direccion');
             $table->string('telefono');
+            $table->string('cedula')->unique();
             $table->string('email')->unique();
             $table->date('fecha_nacimiento');
             $table->string('sexo');
             $table->string('edad');
             $table->string('estado_civil');
+            $table->string('tipo_sangre')->nullable();
+            $table->string('enfermedades')->nullable();
+            $table->string('alergias')->nullable();
 
-            $table->string('tipo_sangre');
-            $table->string('enfermedades');
-            $table->string('alergias');
             $table->timestamps();
         });
     }
+
 
     /**
      * Reverse the migrations.

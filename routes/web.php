@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\admin\main;
 use App\Http\Controllers\Login\LoginController as LoginController;
 use Illuminate\Support\Facades\Route;
 
@@ -16,6 +17,9 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/', function () {
+    return view('login');
+});
+Route::get('/login', function () {
     return view('login');
 });
 Route::post('/login', [LoginController::class, 'login'])->name('login');
@@ -36,6 +40,8 @@ Route::middleware(['auth'])->group(function () {
         return view('admin.donaciones');
     })->name('donaciones');
 
+    Route::get('/historiadonaciones', [main::class, 'donaciones'])->name('historiadonaciones');;
+
     Route::get('/usuarios', function () {
         return view('admin.usuarios');
     })->name('usuarios');
@@ -55,7 +61,4 @@ Route::middleware(['auth'])->group(function () {
 
 
     Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
-
 });
-
-

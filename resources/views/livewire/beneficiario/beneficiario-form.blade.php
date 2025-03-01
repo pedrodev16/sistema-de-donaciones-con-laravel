@@ -17,6 +17,11 @@
                 <input type="text" wire:model="direccion" class="form-input w-full border-gray-300 rounded-md shadow-sm" id="direccion" name="direccion">
                 @error('direccion') <span class="text-red-500 text-sm">{{ $message }}</span>@enderror
             </div>
+               <div>
+                <label class="block text-gray-700 text-sm font-medium mb-2" for="cedula">Cedula</label>
+                <input type="number" wire:model="cedula" class="form-input w-full border-gray-300 rounded-md shadow-sm" id="cedula" name="cedula">
+                @error('cedula') <span class="text-red-500 text-sm">{{ $message }}</span>@enderror
+            </div>
             <div>
                 <label class="block text-gray-700 text-sm font-medium mb-2" for="telefono">Teléfono</label>
                 <input type="text" wire:model="telefono" class="form-input w-full border-gray-300 rounded-md shadow-sm" id="telefono" name="telefono">
