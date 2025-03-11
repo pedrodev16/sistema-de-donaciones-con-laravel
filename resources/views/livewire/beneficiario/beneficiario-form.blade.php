@@ -1,4 +1,4 @@
-<div class="bg-white p-6 rounded-lg shadow-md">
+<div class="tarjeta p-6 rounded-lg shadow-md transform transition duration-500 hover:scale-105">
     <h2 class="text-2xl font-semibold mb-6">Formulario de Usuario</h2>
     <form wire:submit.prevent="save">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -38,8 +38,13 @@
                 @error('fecha_nacimiento') <span class="text-red-500 text-sm">{{ $message }}</span>@enderror
             </div>
             <div>
-                <label class="block text-gray-700 text-sm font-medium mb-2" for="sexo">Sexo</label>
-                <input type="text" wire:model="sexo" class="form-input w-full border-gray-300 rounded-md shadow-sm" id="sexo" name="sexo">
+                <label class="block text-gray-700 text-sm font-medium mb-2" for="sexo">Genero</label>
+              {{-- <input type="text" wire:model="sexo" class="form-input w-full border-gray-300 rounded-md shadow-sm" id="sexo" name="sexo"> --}}
+               <select wire:model="sexo" class="form-input w-full border-gray-300 rounded-md shadow-sm" id="sexo" name="sexo">
+              <option>Seleccione</option>
+                <option value="M">Masculino</option>
+                <option value="F">Femenino</option>
+              </select>
                 @error('sexo') <span class="text-red-500 text-sm">{{ $message }}</span>@enderror
             </div>
             <div>
@@ -49,18 +54,40 @@
             </div>
             <div>
                 <label class="block text-gray-700 text-sm font-medium mb-2" for="estado_civil">Estado Civil</label>
-                <input type="text" wire:model="estado_civil" class="form-input w-full border-gray-300 rounded-md shadow-sm" id="estado_civil" name="estado_civil">
+             <select wire:model="estado_civil" class="form-input w-full border-gray-300 rounded-md shadow-sm" id="estado_civil" name="estado_civil">
+              <option>Seleccione</option>
+                <option value="Soltero">Soltero</option>
+                <option value="Casado">Casado</option>
+                <option value="Divorciado">Divorciado</option>
+                <option value="Viudo">Viudo</option>
+              </select>
                 @error('estado_civil') <span class="text-red-500 text-sm">{{ $message }}</span>@enderror
             </div>
             <div>
                 <label class="block text-gray-700 text-sm font-medium mb-2" for="tipo_sangre">Tipo de Sangre</label>
-                <input type="text" wire:model="tipo_sangre" class="form-input w-full border-gray-300 rounded-md shadow-sm" id="tipo_sangre" name="tipo_sangre">
+                {{-- <input type="text" wire:model="tipo_sangre" class="form-input w-full border-gray-300 rounded-md shadow-sm" id="tipo_sangre" name="tipo_sangre"> --}}
+              <select wire:model="tipo_sangre" class="form-input w-full border-gray-300 rounded-md shadow-sm" id="tipo_sangre" name="tipo_sangre">
+                 <option>Seleccione</option>
+                <option value="A+">A+</option>
+                <option value="A-">A-</option>
+                <option value="B+">B+</option>
+                <option value="B-">B-</option>
+                <option value="AB+">AB+</option>
+                <option value="AB-">AB-</option>
+                <option value="O+">O+</option>
+                <option value="O-">O-</option>
+              </select>
+
                 @error('tipo_sangre') <span class="text-red-500 text-sm">{{ $message }}</span>@enderror
             </div>
+                   {{-- <label class="block text-gray-700 text-sm font-medium mb-2" for="tipo_sangre">Tipo de Sangre</label> --}}
+                {{-- <input type="text" wire:model="tipo_sangre" class="form-input w-full border-gray-300 rounded-md shadow-sm" id="tipo_sangre" name="tipo_sangre"> --}}
+
             <div>
-                <label class="block text-gray-700 text-sm font-medium mb-2" for="enfermedades">Enfermedades</label>
-                <input type="text" wire:model="enfermedades" class="form-input w-full border-gray-300 rounded-md shadow-sm" id="enfermedades" name="enfermedades">
-                @error('enfermedades') <span class="text-red-500 text-sm">{{ $message }}</span>@enderror
+                <label class="block text-gray-700 text-sm font-medium mb-2" for="discapacidad">Discapacidad</label>
+                <input type="text" wire:model="discapacidad" class="form-input w-full border-gray-300 rounded-md shadow-sm" id="discapacidad" name="discapacidad">
+                @error('discapacidad') <span class="text-red-500 text-sm">{{ $message }}</span>
+                @enderror
             </div>
             <div>
                 <label class="block text-gray-700 text-sm font-medium mb-2" for="alergias">Alergias</label>

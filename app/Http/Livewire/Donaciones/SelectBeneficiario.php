@@ -22,7 +22,9 @@ class SelectBeneficiario extends Component
     }
     public function render()
     {
-        $beneficiarios = beneficiarios::where('nombre', 'like', '%' . $this->search . '%')->get();
+        $beneficiarios = beneficiarios::where('nombre', 'like', '%' . $this->search . '%')
+            ->orWhere('cedula', 'like', '%' . $this->search . '%')
+            ->get();
         return view('livewire.donaciones.select-beneficiario', [
             'beneficiarios' => $beneficiarios
         ]);

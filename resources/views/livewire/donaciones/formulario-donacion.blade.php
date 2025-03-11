@@ -1,4 +1,4 @@
- <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+ <div class="grid grid-cols-1 md:grid-cols-2 gap-4  bg-white p-4 rounded shadow">
     @if($mostrar_form)
 
 
@@ -56,10 +56,7 @@
         <label class="block text-gray-700 text-sm font-bold mb-2" for="sexo">
             Sexo
         </label>
-        <select disabled class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="sexo" wire:model="sexo">
-            <option value="M">Masculino</option>
-            <option value="F">Femenino</option>
-        </select>
+          <input disabled class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="sexo" type="text"  wire:model="sexo">
     </div>
 
     <div class="mb-4">
@@ -73,30 +70,22 @@
         <label class="block text-gray-700 text-sm font-bold mb-2" for="estado_civil">
             Estado Civil
         </label>
-        <select class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="estado_civil" wire:model="estado_civil">
-            <option value="Soltero">Soltero</option>
-            <option value="Casado">Casado</option>
-            <option value="Divorciado">Divorciado</option>
-            <option value="Viudo">Viudo</option>
-        </select>
+         <input disabled class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="estado_civil" type="text"  wire:model="estado_civil">
     </div>
 
     <div class="mb-4">
         <label class="block text-gray-700 text-sm font-bold mb-2" for="tipo_sangre">
             T-Sangre
         </label>
-        <select class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="tipo_sangre" wire:model="tipo_sangre">
-            <option value="O+">O+</option>
-            <option value="O-">O-</option>
-            <option value="A+">A+</option>
-            <option value="A-">A-</option>
-            <option value="B+">B+</option>
-            <option value="B-">B-</option>
-            <option value="AB+">AB+</option>
-            <option value="AB-">AB-</option>
-        </select>
+    <input disabled class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="tipo_sangre" type="text" placeholder="Correo Electrónico" wire:model="tipo_sangre">
     </div>
 
+        <div class="mb-4">
+        <label class="block text-gray-700 text-sm font-bold mb-2" for="discapacidad">
+            Discapacidad
+        </label>
+    <input disabled class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="discapacidad" type="text"  wire:model="discapacidad">
+    </div>
     <div class="mb-4 col-span-2">
         <label class="block text-gray-700 text-sm font-bold mb-2" for="enfermedades">
             Enfermedades

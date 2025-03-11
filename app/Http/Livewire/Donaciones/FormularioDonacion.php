@@ -19,6 +19,7 @@ class FormularioDonacion extends Component
     public $apellido;
     public $direccion;
     public $telefono;
+    public $discapacidad;
     public $ci;
     public $email;
     public $fecha_nacimiento;
@@ -97,7 +98,8 @@ class FormularioDonacion extends Component
     public function updateCantidad($index, $cantidad)
     {
         if ($cantidad > $this->items[$index]['stock']) {
-            $this->emit('error', ['message' => 'La Cantidad es mayor que el stock disponible']);
+            $this->emit('error', ['message' =>
+            'La Cantidad es mayor que el stock disponible']);
             return;
         }
 
@@ -127,6 +129,7 @@ class FormularioDonacion extends Component
         $this->fecha_nacimiento = $usuario->fecha_nacimiento;
         $this->sexo = $usuario->sexo;
         $this->edad = $usuario->edad;
+        $this->discapacidad = $usuario->discapacidad;
         $this->estado_civil = $usuario->estado_civil;
         $this->tipo_sangre = $usuario->tipo_sangre;
         $this->enfermedades = $usuario->enfermedades;
@@ -138,7 +141,7 @@ class FormularioDonacion extends Component
     public function registrarDonacion()
     {
         $medicinas = json_encode($this->items);
-
+        $cantidad_items = count($this->items);
         foreach ($this->items as $item) {
             $stock = Stock::where('medicina_id', $item['id'])->first();
             if ($stock && $stock->cantidad >= $item['cantidad']) {
@@ -153,6 +156,8 @@ class FormularioDonacion extends Component
         donaciones::create([
             'beneficiario_id' => $this->beneficiario_id,
             'medicinas' => $medicinas,
+            'id_usuario' => auth()->user()->id,
+            'cantidad' => $cantidad_items,
         ]);
 
         $this->emit('ok', ['message' => 'Registro exitoso']);
@@ -169,6 +174,7 @@ class FormularioDonacion extends Component
             'fecha_nacimiento',
             'sexo',
             'edad',
+            'discapacidad',
             'estado_civil',
             'tipo_sangre',
             'enfermedades',

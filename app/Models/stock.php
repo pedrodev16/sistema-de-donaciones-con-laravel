@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class stock extends Model
 {
     use HasFactory;
-    protected $fillable = ['medicina_id', 'cantidad', 'ubicacion', 'observacion', 'estado'];
+    protected $fillable = ['medicina_id', 'cantidad', 'ubicacion', 'observacion', 'estado', 'id_usuario'];
 
     public function medicina()
     {

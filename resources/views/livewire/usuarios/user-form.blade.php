@@ -10,7 +10,7 @@
         <div class="mb-4 text-green-500">{{ session('message') }}</div>
     @endif
 
-    <form class="shadow-md" wire:submit.prevent="{{ $editMode ? 'update' : 'register' }}">
+    <form  class="shadow-md tarjeta2 p-4 rounded shadow" wire:submit.prevent="{{ $editMode ? 'update' : 'register' }}">
         <div class="mb-4">
             <label for="name" class="block text-gray-700">Name:</label>
             <input type="text" id="name" wire:model="name" class="w-full px-3 py-2 border rounded-lg">

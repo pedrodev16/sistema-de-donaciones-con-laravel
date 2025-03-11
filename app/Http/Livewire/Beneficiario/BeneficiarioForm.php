@@ -8,7 +8,7 @@ use Livewire\Component;
 class BeneficiarioForm extends Component
 {
     public $usuario_id;
-    public $nombre, $apellido, $direccion, $cedula, $telefono, $email, $fecha_nacimiento, $sexo, $edad, $estado_civil, $tipo_sangre, $enfermedades, $alergias;
+    public $nombre, $apellido, $direccion, $cedula, $telefono, $email, $fecha_nacimiento, $sexo, $edad, $estado_civil, $discapacidad, $tipo_sangre, $enfermedades, $alergias;
 
     protected $listeners = ['edit_form' => 'cargarUsuario'];
 
@@ -19,6 +19,7 @@ class BeneficiarioForm extends Component
         $this->nombre = $usuario->nombre;
         $this->apellido = $usuario->apellido;
         $this->direccion = $usuario->direccion;
+        $this->discapacidad = $usuario->discapacidad;
         $this->telefono = $usuario->telefono;
         $this->cedula = $usuario->cedula;
         $this->email = $usuario->email;
@@ -47,6 +48,7 @@ class BeneficiarioForm extends Component
                 'estado_civil' => 'required|string',
                 'tipo_sangre' => 'nullable|string',
                 'enfermedades' => 'nullable|string',
+                'discapacidad' => 'nullable|string',
                 'alergias' => 'nullable|string',
             ]
         );
@@ -66,6 +68,7 @@ class BeneficiarioForm extends Component
                     'sexo' => $this->sexo,
                     'edad' => $this->edad,
                     'estado_civil' => $this->estado_civil,
+                    'discapacidad' => $this->discapacidad,
                     'tipo_sangre' => $this->tipo_sangre,
                     'enfermedades' => $this->enfermedades,
                     'alergias' => $this->alergias
@@ -86,10 +89,12 @@ class BeneficiarioForm extends Component
                     'fecha_nacimiento' => $this->fecha_nacimiento,
                     'sexo' => $this->sexo,
                     'edad' => $this->edad,
+                    'discapacidad' => $this->discapacidad,
                     'estado_civil' => $this->estado_civil,
                     'tipo_sangre' => $this->tipo_sangre,
                     'enfermedades' => $this->enfermedades,
-                    'alergias' => $this->alergias
+                    'alergias' => $this->alergias,
+                    'id_usuario' => auth()->user()->id,
                 ]);
                 $this->emit('ok', ['message' => 'Usuario creado']);
             } catch (\Exception $e) {

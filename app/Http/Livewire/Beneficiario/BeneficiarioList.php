@@ -8,8 +8,8 @@ use Livewire\Component;
 class BeneficiarioList extends Component
 {
 
-
-
+    public $confirmingDelete = false;
+    public $id_beneficiario;
     public $beneficiario, $nombre, $medicina_id;
 
     protected $listeners = ['beneficiarioCreated' => 'cargabeneficiario'];
@@ -30,15 +30,24 @@ class BeneficiarioList extends Component
 
 
 
-    public function delete($id)
+    public function delete($confirmingDelete)
     {
-        $beneficiario = beneficiarios::findOrFail($id);
+        if ($confirmingDelete) {
+            $beneficiario = beneficiarios::findOrFail($this->id_beneficiario);
 
 
-        // Luego eliminar la medicina
-        $beneficiario->delete();
-        $beneficiario->cargamedicinas();
+            // Luego eliminar la medicina
+            $beneficiario->delete();
+            $this->cargabeneficiario();
+            $this->confirmingDelete = false;
+        }
     }
+    public function confirmDelete($id)
+    {
+        $this->confirmingDelete = true;
+        $this->id_beneficiario = $id;
+    }
+
 
     public function render()
     {

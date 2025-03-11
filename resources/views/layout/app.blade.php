@@ -8,13 +8,33 @@
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.0.2/dist/tailwind.min.css" rel="stylesheet">
 @livewireStyles
     <title>app</title>
+
+    <style>
+        .tarjeta{
+            background-image: url("{{ asset('asset/fondo2.jpg') }}");
+            /* background: radial-gradient(#e5e5e5, #77d5cb); */
+    border-radius: 34px;
+    border: solid #fff 5px;
+        }
+          .tarjeta2{
+            background-image: url("{{ asset('asset/fondo3.jpg') }}");
+            /* background: radial-gradient(#e5e5e5, #77d5cb); */
+            background-repeat: round;
+    border-radius: 34px;
+    border: solid #fff 5px;
+        }
+        .bg-base{
+            background-color: rgb(114 212 203);
+        }
+    </style>
 </head>
-<body style="background: #dbf3ed;">
+<body style="background: url('{{ asset('asset/img1.jpg') }}') no-repeat center center; background-size: cover;">
     <!-- Navigation -->
-    <nav class="bg-gray-800 p-4">
+    <nav style="background-color: rgb(114 212 203);" class=" p-4">
         <div class="container mx-auto flex justify-between items-center">
-            <a href="#" class="text-white
-            text-2xl font-bold">App</a>
+            <a href="#" class="text-white text-2xl font-bold flex items-center">
+                <img src="{{ asset('asset/logo2.png') }}" alt="App Logo" class="h-10 mr-2">MEDICALIFE
+            </a>
             <ul class="flex">
                 <li><a href="{{route('home')}}" class="text-white
                 hover:text-gray-200 px-4">Inicio</a></li>

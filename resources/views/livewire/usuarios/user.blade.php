@@ -1,5 +1,5 @@
 <div>
-    <div class="mt-6" >
+    <div class= "mt-6 tarjeta p-4 rounded shadow" >
         <table id="beneficiarioTable" class="min-w-full bg-white">
             <thead>
                 <tr>

@@ -8,6 +8,9 @@ use Livewire\Component;
 class StockList extends Component
 {
     public $medicinas, $nombre, $medicina_id;
+
+    protected $listeners = ['medicinaCreated' => 'cargamedicinas'];
+
     public function mount()
     {
         $this->cargamedicinas();

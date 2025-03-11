@@ -28,9 +28,7 @@ Route::post('/login', [LoginController::class, 'login'])->name('login');
 //middleware para proteger la ruta
 Route::middleware(['auth'])->group(function () {
 
-    Route::get('/home', function () {
-        return view('admin.Welcome');
-    })->name('home');
+
 
     Route::get('/beneficiarios', function () {
         return view('admin.beneficiarios');
@@ -40,7 +38,9 @@ Route::middleware(['auth'])->group(function () {
         return view('admin.donaciones');
     })->name('donaciones');
 
-    Route::get('/historiadonaciones', [main::class, 'donaciones'])->name('historiadonaciones');;
+    Route::get('/home', [main::class, 'home'])->name('home');
+    Route::get('/historiadonaciones', [main::class, 'donaciones'])->name('historiadonaciones');
+    Route::get('/informe/{id}', [main::class, 'informe'])->name('informe');
 
     Route::get('/usuarios', function () {
         return view('admin.usuarios');

@@ -1,4 +1,4 @@
-<div class="bg-white p-4 rounded shadow">
+<div class="tarjeta2 p-4 rounded shadow transform transition duration-500 hover:scale-105">
     <h2 class="text-2xl font-bold mb-4">Editar Stock</h2>
     <form wire:submit.prevent="save">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -24,7 +24,11 @@
             </div>
             <div>
                 <label class="block text-gray-700 text-sm font-bold mb-2" for="estado">Estado</label>
-                <input type="text" wire:model="estado" class="form-input w-full" id="estado" name="estado">
+                <select wire:model="estado" class="form-input w-full" id="estado" name="estado">
+                    <option value="">Seleccione una opción</option>
+                    <option value="disponible">Disponible</option>
+                    <option value="no disponible">No Disponible</option>
+                </select>
                 @error('estado') <span class="text-red-500">{{ $message }}</span>@enderror
             </div>
             <div>

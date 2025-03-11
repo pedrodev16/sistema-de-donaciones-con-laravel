@@ -14,14 +14,17 @@ return new class extends Migration
         Schema::create('medicinas', function (Blueprint $table) {
             $table->id();
             $table->string('nombre');
+            $table->string('tipo_dosis')->nullable();
+            $table->string('dosis')->nullable();
             $table->string('descripcion');
             $table->string('tipo');
             $table->string('presentacion');
             $table->string('laboratorio');
+            $table->string('id_usuario');
             $table->timestamps();
         });
     }
-   // nombre, descripcion, tipo, presentacion, laboratorio
+    // nombre, descripcion, tipo, presentacion, laboratorio
     /**
      *
      *

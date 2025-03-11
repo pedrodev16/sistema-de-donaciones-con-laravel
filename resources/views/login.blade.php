@@ -1,6 +1,10 @@
 @extends('layout.auth_app')
     @section('content')
-        <form action="{{ route('login') }}" method="post" class="max-w-md mx-auto mt-8 p-6 bg-white rounded-lg shadow-md">
+
+    <div class="flex justify-center mb-9">
+        <img src="{{ asset('asset/logo.png') }}" alt="Logo" class="h-52">
+    </div>
+        <form style="border: solid #a6a6a6 5px;" action="{{ route('login') }}" method="post" class="max-w-md mx-auto mt-8 p-6 bg-white rounded-lg shadow-md">
             @csrf
             <div class="mb-4">
             <label for="email" class="block text-sm font-medium text-gray-700">Email</label>

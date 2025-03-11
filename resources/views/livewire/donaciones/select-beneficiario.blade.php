@@ -1,4 +1,4 @@
-<div class="p-4">
+<div class="p-4 bg-white p-4 rounded shadow">
 
 
 

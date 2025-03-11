@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Donaciones;
 
 use App\Models\Medicinas;
+use App\Models\stock;
 use Livewire\Component;
 
 class Medicamentos extends Component
@@ -23,7 +24,13 @@ class Medicamentos extends Component
     }
     public function render()
     {
-        $Medicamentos = Medicinas::where('nombre', 'like', '%' . $this->search . '%')->get();
+
+        $Medicamentos = Medicinas::where('nombre', 'like', '%' . $this->search . '%')
+            ->whereHas('stocks', function ($query) {
+                $query->where('estado', 'disponible')
+                    ->where('cantidad', '>=', 1);
+            })
+            ->get();
         return view('livewire.donaciones.medicamentos', ['medicamentos' => $Medicamentos]);
     }
 }

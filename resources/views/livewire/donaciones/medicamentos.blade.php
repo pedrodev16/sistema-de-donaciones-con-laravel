@@ -1,4 +1,4 @@
-<div class="p-4">
+<div class="p-4 bg-white p-4 rounded shadow">
       @if($benef)
     <div class="text-lg font-semibold mb-4">Seleccionar Medicanento</div>
     <input type="text" wire:model="search" placeholder="Buscar beneficiarios..." class="w-full p-2 border border-gray-300 rounded mb-4">

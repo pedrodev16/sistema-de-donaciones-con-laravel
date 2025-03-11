@@ -53,7 +53,7 @@ class StockForm extends Component
             return;
         }
 
-        if ($this->cantidad <= $this->stock->cantidad) {
+        if ($this->cantidad < $this->stock->cantidad) {
             $this->emit('error', ['message' => 'La nueva cantidad debe ser mayor que la cantidad existente']);
             return;
         }
@@ -68,8 +68,11 @@ class StockForm extends Component
 
             $this->reset();
             $this->emit('ok', ['message' => 'Stock actualizado']);
+            $this->emit('medicinaCreated');
         } catch (\Exception $e) {
             $this->emit('error', ['message' => 'Error al actualizar stock']);
+            // medicinaCreated
+
         }
     }
 

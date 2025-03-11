@@ -26,8 +26,9 @@ return new class extends Migration
             $table->string('estado_civil');
             $table->string('tipo_sangre')->nullable();
             $table->string('enfermedades')->nullable();
+            $table->string('discapacidad')->nullable();
             $table->string('alergias')->nullable();
-
+            $table->string('id_usuario');
             $table->timestamps();
         });
     }

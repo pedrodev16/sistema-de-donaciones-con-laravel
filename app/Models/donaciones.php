@@ -10,7 +10,9 @@ class donaciones extends Model
     use HasFactory;
     protected $fillable = [
         'beneficiario_id',
-        'medicinas'
+        'medicinas',
+        'id_usuario',
+        'cantidad'
     ];
 
     public function beneficiario()

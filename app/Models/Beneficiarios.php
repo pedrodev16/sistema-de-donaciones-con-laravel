@@ -12,6 +12,7 @@ class beneficiarios extends Model
         'nombre',
         'apellido',
         'direccion',
+        'discapacidad',
         'telefono',
         'cedula',
         'email',
@@ -22,5 +23,6 @@ class beneficiarios extends Model
         'tipo_sangre',
         'enfermedades',
         'alergias',
+        'id_usuario',
     ];
 }
