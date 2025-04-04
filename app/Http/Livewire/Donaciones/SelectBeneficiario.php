@@ -22,8 +22,12 @@ class SelectBeneficiario extends Component
     }
     public function render()
     {
-        $beneficiarios = beneficiarios::where('nombre', 'like', '%' . $this->search . '%')
-            ->orWhere('cedula', 'like', '%' . $this->search . '%')
+        //eliminado=no
+        $beneficiarios = beneficiarios::where(function ($query) {
+            $query->where('nombre', 'like', '%' . $this->search . '%')
+                ->orWhere('cedula', 'like', '%' . $this->search . '%');
+        })
+            ->where('eliminado', 'no') // Este filtro es global a toda la búsqueda
             ->get();
         return view('livewire.donaciones.select-beneficiario', [
             'beneficiarios' => $beneficiarios

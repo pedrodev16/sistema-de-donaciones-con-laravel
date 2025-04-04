@@ -16,11 +16,16 @@ return new class extends Migration
             $table->string('nombre');
             $table->string('tipo_dosis')->nullable();
             $table->string('dosis')->nullable();
+            $table->string('codigo_de_barras');
+            $table->date('fecha_vencimiento');
             $table->string('descripcion');
             $table->string('tipo');
             $table->string('presentacion');
             $table->string('laboratorio');
-            $table->string('id_usuario');
+            $table->foreignId('id_usuario')
+                ->nullable() // Permite valores nulos en caso de eliminar el beneficiario
+                ->constrained('users')
+                ->onDelete('set null');
             $table->timestamps();
         });
     }

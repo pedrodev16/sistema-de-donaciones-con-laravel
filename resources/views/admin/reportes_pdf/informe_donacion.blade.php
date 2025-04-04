@@ -1,14 +1,17 @@
-@extends('layout.app')
-@section('content')
+
 
     <div class="container mx-auto  bg-white p-6 rounded-lg shadow-md">
-        <h1 class="text-3xl font-bold text-center mt-8">Informe de Donaciones</h1>
+        <h1 class="text-3xl font-bold text-center mt-8">Informe de Donación 000{{ $donaciones->id }}</h1>
 
 
 
     <h2>Datos de Beneficiario</h2>
 
             <table style="width: 100%; margin-top: 20px; border-collapse: collapse;">
+                  <tr>
+            <td style="padding: 10px; border: 1px solid #ddd; font-weight: bold;">Nombre:</td>
+            <td style="padding: 10px; border: 1px solid #ddd;">{{ $datos->nombre }} {{ $datos->apellido }}</td>
+        </tr>
         <tr>
             <td style="padding: 10px; border: 1px solid #ddd; font-weight: bold;">Cedula:</td>
             <td style="padding: 10px; border: 1px solid #ddd;">{{ $datos->cedula }}</td>
@@ -65,9 +68,9 @@
             </tr>
         </thead>
         <tbody>
-            @foreach ($donaciones as $d)
+
                 <tr>
-                    <td style="padding: 10px; border: 1px solid #ddd;">{{ $d->created_at }}</td>
+                    <td style="padding: 10px; border: 1px solid #ddd;">{{ $donaciones->created_at }}</td>
                     <td style="padding: 10px; border: 1px solid #ddd;">
 
         <table style="width: 100%; margin-top: 20px; border-collapse: collapse;">
@@ -80,7 +83,7 @@
             </tr>
         </thead>
                    @php
-             $l = json_decode($d->medicinas)
+             $l = json_decode($donaciones->medicinas)
          @endphp
         <tr>
                @foreach ($l as $m)
@@ -98,9 +101,7 @@
 
 
                 </tr>
-            @endforeach
+
         </tbody>
     </table>
     </div>
-    @endsection
-

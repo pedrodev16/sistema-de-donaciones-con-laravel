@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('direccion');
             $table->string('telefono');
             $table->string('cedula')->unique();
-            $table->string('email')->unique();
+            $table->string('email')->nullable();
             $table->date('fecha_nacimiento');
             $table->string('sexo');
             $table->string('edad');
@@ -28,7 +28,11 @@ return new class extends Migration
             $table->string('enfermedades')->nullable();
             $table->string('discapacidad')->nullable();
             $table->string('alergias')->nullable();
-            $table->string('id_usuario');
+            $table->foreignId('id_usuario')
+                ->nullable() // Permite valores nulos en caso de eliminar el beneficiario
+                ->constrained('users')
+                ->onDelete('set null');
+            $table->string('eliminado');
             $table->timestamps();
         });
     }

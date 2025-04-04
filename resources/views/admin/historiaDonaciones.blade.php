@@ -8,6 +8,7 @@
         <table id="beneficiarioTable" class="table-auto w-full mt-8">
             <thead>
                 <tr>
+                           <th class="px-4 py-2">Cod</th>
                     <th class="px-4 py-2">Nombre</th>
 
                     <th class="px-4 py-2">Cedula</th>
@@ -18,6 +19,7 @@
             <tbody>
                 @foreach ($donaciones as $d)
                     <tr>
+                            <td class="border px-4 py-2">000{{ $d->id }}</td>
                         <td class="border px-4 py-2">{{ $d->beneficiario->nombre }}  {{ $d->beneficiario->apellido }}</td>
                         <td class="border px-4 py-2">{{ $d->beneficiario->cedula }}</td>
                         <td class="border px-4 py-2">{{ $d->created_at }}</td>
@@ -28,7 +30,7 @@
                             {{-- @foreach ($l as $m)
                                 {{ $m->nombre }}@if (!$loop->last), @endif
                             @endforeach --}}
-                            <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-md">Ver</button>
+                            <a href="{{ route('informedonacion', $d->id) }}" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-md">Ver</a>
                         </td>
                     </tr>
                 @endforeach

@@ -19,7 +19,7 @@ class BeneficiarioList extends Component
     }
     public function cargabeneficiario()
     {
-        $this->beneficiario = beneficiarios::all();
+        $this->beneficiario = beneficiarios::where('eliminado', 'no')->get();
     }
 
 
@@ -34,10 +34,9 @@ class BeneficiarioList extends Component
     {
         if ($confirmingDelete) {
             $beneficiario = beneficiarios::findOrFail($this->id_beneficiario);
-
-
             // Luego eliminar la medicina
-            $beneficiario->delete();
+            $beneficiario->eliminado = 'si';
+            $beneficiario->save();
             $this->cargabeneficiario();
             $this->confirmingDelete = false;
         }

@@ -18,6 +18,8 @@ class MedicinaForm extends Component
     public $dosis;
     public $tipo_dosis;
     public $medicina_id;
+    public $codigo_de_barras;
+    public $fecha_vencimiento;
 
     protected $listeners = ['edit_form' => 'cargamedicinas'];
 
@@ -28,7 +30,9 @@ class MedicinaForm extends Component
         'dosis' => 'nullable|string',
         'tipo_dosis' => 'nullable|string',
         'presentacion' => 'required',
-        'laboratorio' => 'required'
+        'laboratorio' => 'required',
+        'codigo_de_barras' => 'required',
+        'fecha_vencimiento' => 'required'
     ];
 
     // public function save()
@@ -60,6 +64,8 @@ class MedicinaForm extends Component
         $this->presentacion = $medicina->presentacion;
         $this->laboratorio = $medicina->laboratorio;
         $this->medicina_id = $medicina->id;
+        $this->codigo_de_barras = $medicina->codigo_de_barras;
+        $this->fecha_vencimiento = $medicina->fecha_vencimiento;
         $this->dosis = $medicina->dosis ?? null;
         $this->tipo_dosis = $medicina->tipo_dosis ?? null;
     }
@@ -74,7 +80,9 @@ class MedicinaForm extends Component
             'presentacion' => 'required',
             'laboratorio' => 'required',
             'dosis' => 'nullable|string',
-            'tipo_dosis' => 'nullable|string'
+            'tipo_dosis' => 'nullable|string',
+            'codigo_de_barras' => 'required',
+            'fecha_vencimiento' => 'required'
         ]);
 
         if ($this->medicina_id) {
@@ -89,7 +97,9 @@ class MedicinaForm extends Component
                     'presentacion' => $this->presentacion,
                     'laboratorio' => $this->laboratorio,
                     'dosis' => $this->dosis,
-                    'tipo_dosis' => $this->tipo_dosis
+                    'tipo_dosis' => $this->tipo_dosis,
+                    'codigo_de_barras' => $this->codigo_de_barras,
+                    'fecha_vencimiento' => $this->fecha_vencimiento
                 ]);
                 $this->emit('ok', ['message' => 'Medicina actualizada']);
             } catch (\Exception $e) {
@@ -105,7 +115,9 @@ class MedicinaForm extends Component
                     'laboratorio' => $this->laboratorio,
                     'id_usuario' => auth()->user()->id,
                     'dosis' => $this->dosis,
-                    'tipo_dosis' => $this->tipo_dosis
+                    'tipo_dosis' => $this->tipo_dosis,
+                    'codigo_de_barras' => $this->codigo_de_barras,
+                    'fecha_vencimiento' => $this->fecha_vencimiento
                 ]);
                 stock::create([
                     'medicina_id' => $medicina->id,
@@ -128,7 +140,12 @@ class MedicinaForm extends Component
             'descripcion',
             'tipo',
             'presentacion',
-            'laboratorio'
+            'laboratorio',
+            'dosis',
+            'tipo_dosis',
+            'codigo_de_barras',
+            'fecha_vencimiento'
+
         ]);
         $this->emit('medicinaCreated');
     }

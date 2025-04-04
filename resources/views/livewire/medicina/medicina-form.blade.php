@@ -27,6 +27,19 @@
                 </select>
               @error('tipo_dosis') <span class="text-red-500 text-sm">{{ $message }}</span>@enderror
             </div>
+            <!-- fecha de vencimiento -->
+            <div>
+                <label class="block text-gray-700 text-sm font-medium mb-2" for="fecha_vencimiento">Fecha de Vencimiento</label>
+                <input type="date" wire:model="fecha_vencimiento" class="form-input w-full border-gray-300 rounded-md shadow-sm" id="fecha_vencimiento" name="fecha_vencimiento">
+                @error('fecha_vencimiento') <span class="text-red-500 text-sm">{{ $message }}</span>@enderror
+            </div>
+            <!-- codigo de barras -->
+            <div>
+                <label class="block text-gray-700 text-sm font-medium mb-2" for="codigo_de_barras">Codigo de Caja</label>
+                <input type="text" wire:model="codigo_de_barras" class="form-input w-full border-gray-300 rounded-md shadow-sm" id="codigo_de_barras" name="codigo_de_barras">
+                @error('codigo_de_barras') <span class="text-red-500 text-sm">{{ $message }}</span>@enderror
+            </div>
+
 
             <div>
                 <label class="block text-gray-700 text-sm font-medium mb-2" for="descripcion">Descripcion</label>

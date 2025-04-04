@@ -18,7 +18,7 @@
 @endsection
 @section('alscripts')
 
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="{{asset('asset/js/sweetalert2@11.js')}}"></script>
     <script>
           Livewire.on('error', evento => {
             Swal.fire({

@@ -83,6 +83,8 @@ class FormularioDonacion extends Component
                 $this->items[] = [
                     'id' => $medicamento->id,
                     'nombre' => $medicamento->nombre,
+                    'dosificacion' => $medicamento->dosis . ' ' . $medicamento->tipo_dosis,
+                    'codigo' => $medicamento->codigo_de_barras,
                     'cantidad' => 1,
                     'stock' => $stock,
                 ];
@@ -161,6 +163,7 @@ class FormularioDonacion extends Component
         ]);
 
         $this->emit('ok', ['message' => 'Registro exitoso']);
+        return redirect()->route('donaciones')->with('success', 'Registro exitoso');
         $this->reset([
             'beneficiario_id',
             'beneficiario_data',

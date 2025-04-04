@@ -1,5 +1,17 @@
 <div class="tarjeta p-4 rounded shadow transform transition duration-500 hover:scale-105">
-    <h2 class="text-2xl font-bold mb-4">Lista de Medicinas</h2>
+
+@php
+    $dt="";
+@endphp
+    @if($ver_vencidas)
+@php
+    $dt="Vencidas ".$cantidad_medicinas_vencidas ;
+@endphp
+
+    @else
+  <button wire:click="showExpiredMedicines" class="mb-4 bg-red-500 text-white px-4 py-2 rounded">Medicinas Vencidas {{$cantidad_medicinas_vencidas}}</button>
+    @endif
+   <h2 class="text-2xl font-bold mb-4">Lista de Medicinas {{$dt}}</h2>
     <table id="beneficiarioTable" class="min-w-full bg-white">
         <thead>
             <tr>

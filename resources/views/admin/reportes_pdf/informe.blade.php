@@ -1,14 +1,9 @@
-@extends('layout.app')
-@section('content')
-
-    <div class="container mx-auto  bg-white p-6 rounded-lg shadow-md">
-        <h1 class="text-3xl font-bold text-center mt-8">Informe de Donaciones</h1>
-
-
+<div style="width: 100%; background-color: white; padding: 20px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+    <h1 style="font-size: 24px; font-weight: bold; text-align: center; margin-top: 20px;">Informe de Donaciones</h1>
 
     <h2>Datos de Beneficiario</h2>
 
-            <table style="width: 100%; margin-top: 20px; border-collapse: collapse;">
+    <table style="width: 100%; margin-top: 20px; border-collapse: collapse;">
         <tr>
             <td style="padding: 10px; border: 1px solid #ddd; font-weight: bold;">Cedula:</td>
             <td style="padding: 10px; border: 1px solid #ddd;">{{ $datos->cedula }}</td>
@@ -52,11 +47,7 @@
     </table>
 
 
-
-
-
-
-       <table style="width: 100%; margin-top: 20px; border-collapse: collapse;">
+    <table style="width: 100%; margin-top: 20px; border-collapse: collapse;">
         <thead>
             <tr>
                 <th style="padding: 10px; border: 1px solid #ddd;">Dia</th>
@@ -70,23 +61,15 @@
                     <td style="padding: 10px; border: 1px solid #ddd;">{{ $d->created_at }}</td>
                     <td style="padding: 10px; border: 1px solid #ddd;">
 
-        <table style="width: 100%; margin-top: 20px; border-collapse: collapse;">
-            <thead>
-            <tr>
-                <th style="padding: 10px; border: 1px solid #ddd;">Nombre</th>
-                <th style="padding: 10px; border: 1px solid #ddd;">Cantidad</th>
-                         <th style="padding: 10px; border: 1px solid #ddd;">Codigo</th>
-
-            </tr>
-        </thead>
-                   @php
-             $l = json_decode($d->medicinas)
-         @endphp
+                          <table style="width: 100%; margin-top: 20px; border-collapse: collapse;">
+                             @php
+                            $l = json_decode($d->medicinas)
+                        @endphp
         <tr>
                @foreach ($l as $m)
-        <td style="padding: 10px; border: 1px solid #ddd;"> {{ $m->nombre }} {{ $m->dosificacion}}@if (!$loop->last), @endif</td>
-            <td style="padding: 10px; border: 1px solid #ddd;">{{ $m->cantidad }}</td>
-         <td style="padding: 10px; border: 1px solid #ddd;">{{ $m->codigo }}</td>
+          <td style="padding: 10px; border: 1px solid #ddd;"> {{ $m->nombre }}@if (!$loop->last), @endif</td>
+
+                             <td style="padding: 10px; border: 1px solid #ddd;">{{ $m->cantidad }}</td>
         </tr>
          @endforeach
       </table>
@@ -101,6 +84,4 @@
             @endforeach
         </tbody>
     </table>
-    </div>
-    @endsection
-
+</div>

@@ -24,5 +24,6 @@ class beneficiarios extends Model
         'enfermedades',
         'alergias',
         'id_usuario',
+        'eliminado'
     ];
 }

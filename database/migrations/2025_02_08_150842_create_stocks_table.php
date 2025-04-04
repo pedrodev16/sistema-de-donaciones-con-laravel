@@ -15,7 +15,10 @@ return new class extends Migration
         Schema::create('stocks', function (Blueprint $table) {
             $table->id();
             $table->foreignId('medicina_id')->constrained()->onDelete('cascade');
-            $table->string('id_usuario');
+            $table->foreignId('id_usuario')
+                ->nullable() // Permite valores nulos en caso de eliminar el beneficiario
+                ->constrained('users')
+                ->onDelete('set null');
             $table->integer('cantidad');
             $table->string('ubicacion');
             $table->string('observacion');

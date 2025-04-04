@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <!-- tailwindcss -->
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.0.2/dist/tailwind.min.css" rel="stylesheet">
+    <link href="{{ asset('asset/css/tailwind.min.css') }}" rel="stylesheet">
 @livewireStyles
     <title>app</title>
 
@@ -68,9 +68,9 @@
     @yield('alscripts')
 
      <!-- DataTables CDN -->
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
-    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+    <link rel="stylesheet" href="{{asset('asset/css/jquery.dataTables.min.css')}}">
+    <script src="{{asset('asset/js/jquery-3.5.1.js')}}"></script>
+    <script src="{{asset('asset/js/jquery.dataTables.min.js')}}"></script>
     <script>
         $(document).ready(function() {
             $('#beneficiarioTable').DataTable();

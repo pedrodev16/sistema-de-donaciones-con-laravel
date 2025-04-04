@@ -10,15 +10,29 @@ class MedicinaList extends Component
 
 
     public $medicinas, $nombre, $medicina_id;
-
+    public $ver_vencidas = false;
+    public $cantidad_medicinas_vencidas;
     protected $listeners = ['medicinaCreated' => 'cargamedicinas'];
     public function mount()
     {
+
+        $this->cantidad_medicinas_vencidas = Medicinas::where('fecha_vencimiento', '<', now())->count();
+        $this->cargamedicinas();
+    }
+
+    public function showExpiredMedicines()
+    {
+        $this->ver_vencidas = true;
         $this->cargamedicinas();
     }
     public function cargamedicinas()
     {
-        $this->medicinas = Medicinas::all();
+        if ($this->ver_vencidas) {
+            $this->medicinas = Medicinas::where('fecha_vencimiento', '<', now())->get();
+        } else {
+
+            $this->medicinas = Medicinas::where('fecha_vencimiento', '>', now())->get();
+        }
     }
 
 

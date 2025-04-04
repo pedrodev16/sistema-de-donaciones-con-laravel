@@ -17,7 +17,9 @@ class Medicinas extends Model
         'laboratorio',
         'id_usuario',
         'dosis',
-        'tipo_dosis'
+        'tipo_dosis',
+        'codigo_de_barras',
+        'fecha_vencimiento'
     ];
 
     public function stocks()
